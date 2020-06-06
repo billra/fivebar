@@ -1,2 +1,3 @@
-# fivebar
-Five Bar Parallel SCARA simulation
+# Five Bar Parallel SCARA
+
+python code for simulation
