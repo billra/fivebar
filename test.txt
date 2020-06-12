@@ -1,0 +1,11 @@
+Test fivebar library
+
+Import the class:
+
+	>>> from fivebar import *
+
+Point class:
+
+	>>> p = Point(3,4)
+	>>> print(p)
+	point(3,4)
