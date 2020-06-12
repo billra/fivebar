@@ -1,6 +1,6 @@
 Test fivebar library
 
-Import the class:
+Import:
 
 	>>> from fivebar import *
 
@@ -9,3 +9,9 @@ Point class:
 	>>> p = Point(3,4)
 	>>> print(p)
 	point(3,4)
+
+Circle class:
+
+	>>> c = Circle(Point(5,-1), 8)
+	>>> print(c)
+	circle(point(5,-1),8)
