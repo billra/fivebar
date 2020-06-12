@@ -31,6 +31,5 @@ if __name__ == "__main__":
 	main()
 
 # todo:
-# doctest with testfiles
 
 # intersection of two circles: https://stackoverflow.com/a/3349134
