@@ -17,7 +17,7 @@ class Circle:
 		return "circle(" + str(self.center) + "," + str(self.radius) + ")"
 
 def circle_intersect(x1,y1,r1,x2,y2,r2):
-	'Intersection of two cricles, return empty tuple if no or infinite solutions'
+	'Intersection of two circles, return empty tuple if no or infinite solutions'
 	# see: https://stackoverflow.com/a/3349134
 
 	dx = x2 - x1	# distance between circle centers on the x axis
