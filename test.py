@@ -1,2 +1,2 @@
 import doctest
-doctest.testfile("test.txt")
+doctest.testfile("test.txt",optionflags=doctest.ELLIPSIS)

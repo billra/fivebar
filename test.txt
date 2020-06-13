@@ -15,3 +15,31 @@ Circle class:
 	>>> c = Circle(Point(5,-1), 8)
 	>>> print(c)
 	circle(point(5,-1),8)
+
+Circle class, three return tuple lengths:
+
+	>>> a = Circle(Point(1,0),1)
+	>>> b = Circle(Point(3,0),1)
+	>>> c = Circle(Point(2.9,0),1)
+	>>> d = Circle(Point(3.1,0),1)
+	>>> r1 = a.intersect(b)
+	>>> r2 = a.intersect(c)
+	>>> r3 = a.intersect(d)
+	>>> for i in r1: print(i)
+	... 
+	point(2.0,0.0)
+	>>> len(r1)
+	1
+	>>> for i in r2: print(i)
+	... 
+	point(1.95...,-0.31...)
+	point(1.95...,0.31...)
+	>>> len(r2)
+	2
+	>>> for i in r3: print(i)
+	... 
+	>>> len(r3)
+	0
+	>>> 
+
+end of tests.

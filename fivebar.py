@@ -1,6 +1,7 @@
 # Five Bar Parallel SCARA plotter kinematics
 # Bill Ola Rasmussen
 # version 0.1
+import math
 
 class Point:
 	def __init__(self,x,y):
