@@ -16,7 +16,7 @@ Circle class:
 	>>> print(c)
 	circle(point(5,-1),8)
 
-Circle class, three return tuple lengths:
+Circle class, intersect, three return tuple lengths:
 
 	>>> a = Circle(Point(1,0),1)
 	>>> b = Circle(Point(3,0),1)
@@ -40,6 +40,67 @@ Circle class, three return tuple lengths:
 	... 
 	>>> len(r3)
 	0
+	>>> 
+
+Circle class, intersect order of results:
+'turn right'
+
+	>>> a = Circle(Point(0,0),10)
+	>>> b = Circle(Point(14,0),5) # E
+	>>> r0 = a.intersect(b)
+	>>> for i in r0: print(i)
+	... 
+	point(9.67857...,-2.515...)
+	point(9.67857...,2.515...)
+	>>> 
+	>>> b = Circle(Point(9.9,9.9),5) # NE
+	>>> r0 = a.intersect(b)
+	>>> for i in r0: print(i)
+	... 
+	point(8.6217...,5.06616...)
+	point(5.06616...,8.6217...)
+	>>> 
+	>>> b = Circle(Point(0,14),5) # N
+	>>> r0 = a.intersect(b)
+	>>> for i in r0: print(i)
+	... 
+	point(2.515...,9.67857...)
+	point(-2.515...,9.67857...)
+	>>> 
+	>>> b = Circle(Point(-9.9,9.9),5) # NW
+	>>> r0 = a.intersect(b)
+	>>> for i in r0: print(i)
+	... 
+	point(-5.06616...,8.6217...)
+	point(-8.6217...,5.06616...)
+	>>> 
+	>>> b = Circle(Point(-14,0),5) # W
+	>>> r0 = a.intersect(b)
+	>>> for i in r0: print(i)
+	... 
+	point(-9.67857...,2.515...)
+	point(-9.67857...,-2.515...)
+	>>> 
+	>>> b = Circle(Point(-9.9,-9.9),5) # SW
+	>>> r0 = a.intersect(b)
+	>>> for i in r0: print(i)
+	... 
+	point(-8.6217...,-5.06616...)
+	point(-5.06616...,-8.6217...)
+	>>> 
+	>>> b = Circle(Point(0,-14),5) # S
+	>>> r0 = a.intersect(b)
+	>>> for i in r0: print(i)
+	... 
+	point(-2.515...,-9.67857...)
+	point(2.515...,-9.67857...)
+	>>> 
+	>>> b = Circle(Point(9.9,-9.9),5) # SE
+	>>> r0 = a.intersect(b)
+	>>> for i in r0: print(i)
+	... 
+	point(5.06616...,-8.6217...)
+	point(8.6217...,-5.06616...)
 	>>> 
 
 end of tests.
