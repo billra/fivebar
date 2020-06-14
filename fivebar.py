@@ -81,9 +81,9 @@ def main():
 	# hardcoded setup for test
 	O1 = Point(15,0)
 	O2 = Point(35,0)
-	fb = FiveBar(O1 = O1, O2 = O2, L1 = 10, L2 = 10, L3 = 10, L4b = 10, L4a = 2)
+	fb = FiveBar(O1 = O1, O2 = O2, L1 = 10, L2 = 10, L3 = 10, L4b = 10, L4a = 0)
 
-	for y in reversed(range(40)):
+	for y in range(22,-22,-1):
 		print()
 		for x in range(40):
 			if Point(x,y) == O1:
