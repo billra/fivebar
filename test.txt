@@ -9,6 +9,16 @@ Point class:
 	>>> p = Point(3,4)
 	>>> print(p)
 	point(3,4)
+	>>> a = Point(0,0)
+	>>> b = Point(10,20)
+	>>> print(a.towards(b,.5))
+	point(5.0,10.0)
+	>>> print(a.towards(b,.1))
+	point(1.0,2.0)
+	>>> print(a.towards(b,.9))
+	point(9.0,18.0)
+	>>> print(b.towards(a,.1))
+	point(9.0,18.0)
 
 Circle class:
 

@@ -9,6 +9,11 @@ class Point:
 		self.y = y
 	def __str__(self):
 		return "point(" + str(self.x) + "," + str(self.y) + ")"
+	def towards(self,p2,amt):
+		'weighted middle algorithm, amt = 0.5 for middle'
+		x = self.x + (p2.x - self.x) * amt
+		y = self.y + (p2.y - self.y) * amt
+		return Point(x,y)
 
 class Circle:
 	def __init__(self,center,radius):
