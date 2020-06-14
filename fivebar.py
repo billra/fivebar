@@ -46,13 +46,29 @@ class Circle:
 		yi2 = ym + h * dx / dc
 		return Point(xi1,yi1),Point(xi2,yi2)
 
+# FiveBar notes:
+#	arm singularity: 180 deg angle on arm joint (A or B)
+#	tip singularity: 180 deg angle on center joint (C)
 class FiveBar:
 	'Five bar mechanism, see drawing for variable names'
 	def __init__(self,O1,O2,L1,L2,L3,L4b,L4a):
 		self.O1,self.O2,self.L1,self.L2,self.L3,self.L4b,self.L4a = O1,O2,L1,L2,L3,L4b,L4a
-	def solve(self,x,y):
+	def solve(self,D):
 		'find O1,O2 angles given point x,y, return empty tuple if impossble'
-		return ()
+		# right arm
+		Dc = Circle(D,self.L4a + self.L4b)
+		O2c = Circle(self.O2,self.L2)
+		Bt = O2c.intersect(Dc)
+		if(len(Bt) < 2): return () # impossible or (todo) arm singularity
+		B = Bt[0] # note: we are selecting the 'turn right' bend, todo: select using parameter
+		# left arm
+		C = D.towards(B,self.L4a / (self.L4a + self.L4b))
+		Cc = Circle(C,self.L3)
+		O1c = Circle(self.O1,self.L1)
+		At = O1c.intersect(Cc)
+		if(len(At) < 2): return () # impossible or (todo) arm singularity
+		A = At[0] # note: we are selecting the 'turn right' bend, todo: select using parameter
+		return math.atan2(A.y - self.O1.y,A.x - self.O1.x), math.atan2(B.y - self.O2.y,B.x - self.O2.x)
 
 def main():
 	print('Five Bar Kinematics')
@@ -63,11 +79,11 @@ def main():
 	for y in reversed(range(60)):
 		print()
 		for x in range(60):
-			res = fb.solve(x,y)
-			if(len(res)==0):
-				print('.', end = '')
+			res = fb.solve(Point(x,y))
+			if(len(res) == 0):
+				print('.', end = ' ')
 			else:
-				print('*', end = '')
+				print('*', end = ' ')
 
 
 	print('done.')
