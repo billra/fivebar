@@ -7,6 +7,11 @@ class Point:
 	def __init__(self,x,y):
 		self.x = x
 		self.y = y
+	def __eq__(self, other):
+		if isinstance(other, self.__class__):
+			return self.__dict__ == other.__dict__
+		else:
+			return False
 	def __str__(self):
 		return "point(" + str(self.x) + "," + str(self.y) + ")"
 	def towards(self,p2,amt):
@@ -74,17 +79,24 @@ def main():
 	print('Five Bar Kinematics')
 
 	# hardcoded setup for test
-	fb = FiveBar(O1 = Point(25,0), O2 = Point(45,0), L1 = 10, L2 = 10, L3 = 10, L4b = 10, L4a = 2)
+	O1 = Point(15,0)
+	O2 = Point(35,0)
+	fb = FiveBar(O1 = O1, O2 = O2, L1 = 10, L2 = 10, L3 = 10, L4b = 10, L4a = 2)
 
-	for y in reversed(range(60)):
+	for y in reversed(range(40)):
 		print()
-		for x in range(60):
+		for x in range(40):
+			if Point(x,y) == O1:
+				print('1', end = ' ')
+				continue
+			if Point(x,y) == O2:
+				print('2', end = ' ')
+				continue
 			res = fb.solve(Point(x,y))
 			if(len(res) == 0):
 				print('.', end = ' ')
 			else:
 				print('*', end = ' ')
-
 
 	print('done.')
 
