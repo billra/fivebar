@@ -1,6 +1,6 @@
 # Five Bar Parallel SCARA plotter kinematics
 # Bill Ola Rasmussen
-# version 0.1
+# version 0.5
 import math
 
 class Point:
@@ -46,20 +46,31 @@ class Circle:
 		yi2 = ym + h * dx / dc
 		return Point(xi1,yi1),Point(xi2,yi2)
 
+class FiveBar:
+	'Five bar mechanism, see drawing for variable names'
+	def __init__(self,O1,O2,L1,L2,L3,L4b,L4a):
+		self.O1,self.O2,self.L1,self.L2,self.L3,self.L4b,self.L4a = O1,O2,L1,L2,L3,L4b,L4a
+	def solve(self,x,y):
+		'find O1,O2 angles given point x,y, return empty tuple if impossble'
+		return ()
+
 def main():
 	print('Five Bar Kinematics')
 
-	p = Point(3,9)
-	print(p)
+	# hardcoded setup for test
+	fb = FiveBar(O1 = Point(25,0), O2 = Point(45,0), L1 = 10, L2 = 10, L3 = 10, L4b = 10, L4a = 2)
 
-	c = Circle(Point(5,2),8)
-	print(c)
+	for y in reversed(range(60)):
+		print()
+		for x in range(60):
+			res = fb.solve(x,y)
+			if(len(res)==0):
+				print('.', end = '')
+			else:
+				print('*', end = '')
+
 
 	print('done.')
 
 if __name__ == "__main__":
 	main()
-
-# todo:
-
-# intersection of two circles: https://stackoverflow.com/a/3349134
